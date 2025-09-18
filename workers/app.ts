@@ -3,6 +3,7 @@ import { createRequestHandler } from "react-router";
 
 const app = new Hono();
 
+// This is the main entry point for the Cloudflare Worker, the back-end app.
 // Add more routes here
 
 app.get("*", (c) => {
