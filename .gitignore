@@ -13,3 +13,7 @@
 .dev.vars*
 # Allow the example
 !.dev.vars.example
+
+
+# Don't commit anything from the JetBrains IDEs
+.idea/
