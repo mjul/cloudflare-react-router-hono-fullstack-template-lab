@@ -1,19 +1,13 @@
-# Hono + React Router + Vite + ShadCN UI on Cloudflare Workers
+# Hono + React Router + Vite + ShadCN UI + D1 on Cloudflare Workers
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/react-router-hono-fullstack-template)
-![Build modern full-stack apps with Hono, React Router, and ShadCN UI on Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/24c5a7dd-e1e3-43a9-b912-d78d9a4293bc/public)
+This project is a full-stack SaaS web application example for Cloudflare Workers.
 
-<!-- dash-content-start -->
+It is based on the Cloudflare
+template: https://github.com/cloudflare/templates/tree/main/react-router-hono-fullstack-template
 
-A modern full-stack template powered by [Cloudflare Workers](https://workers.cloudflare.com/),
-using [Hono](https://hono.dev/) for backend APIs, [React Router](https://reactrouter.com/) for frontend routing,
-and [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components styled
-with [Tailwind CSS](https://tailwindcss.com/).
+I have added
 
-Built with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for optimized static
-asset delivery and seamless local development. React is configured in single-page app (SPA) mode via Workers.
-
-A perfect starting point for building interactive, styled, and edge-deployed SPAs with minimal configuration.
+- D1 database integration with example migrations
 
 ## Features
 
@@ -25,8 +19,7 @@ A perfect starting point for building interactive, styled, and edge-deployed SPA
 - 🚀 Zero-config Vite build for Workers
 - 🛠️ Automatically deploys with Wrangler
 - 🔎 Built-in Observability to monitor your Worker
-
-<!-- dash-content-end -->
+- 🗄️ D1 database integration with example migrations
 
 ## Tech Stack
 
