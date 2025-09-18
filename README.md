@@ -5,9 +5,13 @@
 
 <!-- dash-content-start -->
 
-A modern full-stack template powered by [Cloudflare Workers](https://workers.cloudflare.com/), using [Hono](https://hono.dev/) for backend APIs, [React Router](https://reactrouter.com/) for frontend routing, and [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components styled with [Tailwind CSS](https://tailwindcss.com/).
+A modern full-stack template powered by [Cloudflare Workers](https://workers.cloudflare.com/),
+using [Hono](https://hono.dev/) for backend APIs, [React Router](https://reactrouter.com/) for frontend routing,
+and [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components styled
+with [Tailwind CSS](https://tailwindcss.com/).
 
-Built with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for optimized static asset delivery and seamless local development. React is configured in single-page app (SPA) mode via Workers.
+Built with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for optimized static
+asset delivery and seamless local development. React is configured in single-page app (SPA) mode via Workers.
 
 A perfect starting point for building interactive, styled, and edge-deployed SPAs with minimal configuration.
 
@@ -21,23 +25,24 @@ A perfect starting point for building interactive, styled, and edge-deployed SPA
 - 🚀 Zero-config Vite build for Workers
 - 🛠️ Automatically deploys with Wrangler
 - 🔎 Built-in Observability to monitor your Worker
+
 <!-- dash-content-end -->
 
 ## Tech Stack
 
 - **Frontend**: React + React Router + ShadCN UI
-  - SPA architecture powered by React Router
-  - Includes accessible, themeable UI from ShadCN
-  - Styled with utility-first Tailwind CSS
-  - Built and optimized with Vite
+    - SPA architecture powered by React Router
+    - Includes accessible, themeable UI from ShadCN
+    - Styled with utility-first Tailwind CSS
+    - Built and optimized with Vite
 
 - **Backend**: Hono on Cloudflare Workers
-  - API routes defined and handled via Hono in `/api/*`
-  - Supports REST-like endpoints, CORS, and middleware
+    - API routes defined and handled via Hono in `/api/*`
+    - Supports REST-like endpoints, CORS, and middleware
 
 - **Deployment**: Cloudflare Workers via Wrangler
-  - Vite plugin auto-bundles frontend and backend together
-  - Deployed worldwide on Cloudflare’s edge network
+    - Vite plugin auto-bundles frontend and backend together
+    - Deployed worldwide on Cloudflare’s edge network
 
 ## Resources
 
@@ -47,3 +52,76 @@ A perfect starting point for building interactive, styled, and edge-deployed SPA
 - 🎨 [shadcn/ui](https://ui.shadcn.com)
 - 💨 [Tailwind CSS Documentation](https://tailwindcss.com/)
 - 🔀 [React Router Docs](https://reactrouter.com/)
+
+## Setup Steps
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Set up your environment variables:
+
+```bash
+# Create a .dev.vars file for local development
+cp .dev.vars.example .dev.vars
+```
+
+Add your API token:
+
+```
+API_TOKEN=your_token_here
+```
+
+_An API token is required to authenticate requests to the API. You should generate this before trying to run the project
+locally or deploying it._
+
+3. Create a [D1 database](https://developers.cloudflare.com/d1/get-started/) with the name
+   `cloudflare-react-router-hono-fullstack-template-lab-db`:
+
+```bash
+  npx wrangler d1 create cloudflare-react-router-hono-fullstack-template-lab-db
+```
+
+...and update the `database_id` field in `wrangler.json` with the new database ID.
+
+If needed, you can list your databases and their IDs like this:
+
+```bash
+  npx wrangler d1 list
+```
+
+4. Run the database migrations locally:
+
+```bash
+  npm run db:migrate
+```
+
+Run the development server:
+
+```bash
+  npm run dev
+```
+
+## Database Migrations
+
+You can create a new database migration like this, using the wrangler CLI and the database name from above:
+
+```bash
+  npx wrangler d1 migrations create cloudflare-react-router-hono-fullstack-template-lab-db "Create initial database"
+```
+
+Then, edit the file in the migrations folder to add your SQL schema changes.
+
+After that, run the migrations locally like this:
+
+```bash
+  npm run db:migrate
+```
+
+To run migrations remotely on the Cloudflare Workers D1 database, use:
+
+```bash
+  npm run db:migrate:remote
+```

@@ -6,9 +6,6 @@
   "name": "cloudflare-react-router-hono-fullstack-template-lab",
   "compatibility_date": "2025-04-01",
   "main": "./workers/app.ts",
-  "vars": {
-    "VALUE_FROM_CLOUDFLARE": "Hello from Hono/CF YEAH!"
-  },
   "observability": {
     "enabled": true
   },
@@ -23,11 +20,20 @@
    * databases, object storage, AI inference, real-time communication and more.
    * https://developers.cloudflare.com/workers/runtime-apis/bindings/
    */
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cloudflare-react-router-hono-fullstack-template-lab-db",
+      "database_id": "cbc6a83f-df33-4b12-8131-bb0a6942a3e3"
+    }
+  ],
   /**
    * Environment Variables
    * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
    */
-  // "vars": { "MY_VARIABLE": "production_value" },
+  "vars": {
+    "VALUE_FROM_CLOUDFLARE": "Hello from Hono/CF YEAH!"
+  },
   /**
    * Note: Use secrets to store sensitive data.
    * https://developers.cloudflare.com/workers/configuration/secrets/

@@ -1,12 +1,13 @@
 {
   "name": "cloudflare-react-router-hono-fullstack-template-lab",
-  "description": "A modern full-stack template powered by Cloudflare Workers, using Hono for backend APIs, React Router for frontend routing, and shadcn/ui for beautiful, accessible components styled with Tailwind CSS",
+  "description": "A modern full-stack template powered by Cloudflare Workers and D1, using Hono for backend APIs, React Router for frontend routing, and shadcn/ui for beautiful, accessible components styled with Tailwind CSS",
   "private": true,
   "type": "module",
   "cloudflare": {
-    "label": "React Router + Hono Fullstack App",
+    "label": "React Router + Hono Fullstack App with D1 database.",
     "products": [
-      "Workers"
+      "Workers",
+      "D1"
     ],
     "categories": [
       "starter"
@@ -40,6 +41,8 @@
   "scripts": {
     "build": "react-router build",
     "cf-typegen": "wrangler types",
+    "db:migrate": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
     "deploy": "npm run build && wrangler deploy",
     "dev": "react-router dev",
     "preview": "npm run build && vite preview",
