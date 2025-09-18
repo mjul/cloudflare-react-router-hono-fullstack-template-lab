@@ -113,8 +113,11 @@ After that, run the migrations locally like this:
   npm run db:migrate
 ```
 
-To run migrations remotely on the Cloudflare Workers D1 database, use:
+To run migrations remotely on the Cloudflare Workers D1 database, use `npm run db:migrate:remote`.
+
+Wrangler generates TypeScript types for your infrastructure and database schema, to update them run:
 
 ```bash
-  npm run db:migrate:remote
+  npm run cf-typegen
 ```
+
