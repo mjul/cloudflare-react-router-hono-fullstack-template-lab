@@ -16,6 +16,10 @@
     "noEmit": true,
     "types": [
       "./worker-configuration.d.ts"
-    ]
+    ],
+    "paths": {
+      "~/*": ["./app/*"],
+      "@/*": ["./app/*"]
+    }
   }
 }
