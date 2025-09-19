@@ -1,8 +1,37 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table";
 import {Card, CardContent, CardHeader, CardTitle,} from "@/components/ui/card";
 
+/** Document Entity */
+export interface Document {
+    id: number,
+    title: string,
+    description: string,
+    date: string,
+}
+
+/** Get the documents from the database */
+export async function getDocuments(): Promise<Document[]> {
+    const res = await fetch(`/api/documents`);
+    const body = await res.json();
+    // TODO: validate
+    if (!body) {
+        throw new Error("documents endpoint returned null body");
+    }
+    if (!body["data"]) {
+        throw new Error("body has no data property");
+    }
+    console.log({getDocuments: body});
+    const docs: Document[] = body.data.map(
+        ({id, title, date, description, sortIndex}) => {
+            return {id, title, description, date};
+        }
+    );
+    return docs;
+}
+
 /** Documents list. */
-function DocumentsList(props: any) {
+function DocumentsList({data}:{data:Document[]}) {
+    const documents = data ? data : [];
     return (
         <Table>
             <TableCaption>Documents</TableCaption>
@@ -15,28 +44,29 @@ function DocumentsList(props: any) {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow>
-                    <TableCell className="font-medium">1</TableCell>
-                    <TableCell>2020-01-02</TableCell>
-                    <TableCell>Foo</TableCell>
-                    <TableCell>Everything about Foo</TableCell>
-                </TableRow>
+                {documents.map((doc: Document) => (
+                    <TableRow>
+                        <TableCell className="font-medium">{doc.id}</TableCell>
+                        <TableCell>{doc.date}</TableCell>
+                        <TableCell>{doc.title}</TableCell>
+                        <TableCell>{doc.description}</TableCell>
+                    </TableRow>
+                ))}
             </TableBody>
         </Table>);
 }
 
 /** Documents view */
-export function Documents(props: any): Element {
+export function Documents({data}:{data:Document[]}): Element {
     return (
         <Card>
             <CardHeader>
                 <CardTitle>Document Management</CardTitle>
             </CardHeader>
             <CardContent>
-                <DocumentsList/>
+                <DocumentsList data={data}/>
             </CardContent>
         </Card>
-
     );
 }
 
