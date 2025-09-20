@@ -23,6 +23,13 @@ export function loader({context}: Route.LoaderArgs) {
     return {message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE, documents: []};
 }
 
+// By default, client loaders do not run on the initial page load, only
+// on subsequent navigations. If you want a client loader to run
+// on the first page load, you can set the `hydrate` property to `true`
+// to force the client loader to run during hydration
+// We do this here because we set the document list to empty in the server loader.
+clientLoader.hydrate = true as const; // `as const` for type inference
+
 export default function Home({loaderData}: Route.ComponentProps) {
     return (
         <>
