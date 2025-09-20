@@ -1,5 +1,6 @@
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table";
 import {Card, CardContent, CardHeader, CardTitle,} from "@/components/ui/card";
+import type {ReactNode} from "react";
 
 /** Document Entity */
 export interface Document {
@@ -30,7 +31,7 @@ export async function getDocuments(): Promise<Document[]> {
 }
 
 /** Documents list. */
-function DocumentsList({data}:{data:Document[]}) {
+function DocumentsList({data}: { data: Document[] }) {
     const documents = data ? data : [];
     return (
         <Table>
@@ -57,7 +58,7 @@ function DocumentsList({data}:{data:Document[]}) {
 }
 
 /** Documents view */
-export function Documents({data}:{data:Document[]}): Element {
+export function Documents({data}: { data: Document[] }): ReactNode {
     return (
         <Card>
             <CardHeader>
